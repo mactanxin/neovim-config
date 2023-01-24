@@ -1,0 +1,16 @@
+{
+  "Vue Single File Component": {
+    "prefix": "vbase3-ts",
+    "body": [
+      "<template>",
+      "</template>",
+      "",
+      "<script setup lang=\"ts\">",
+      "</script>",
+      "",
+      "<style scoped>",
+      "</style>"
+    ],
+     "description": "Base for Vue File with CSS"
+  }
+}
