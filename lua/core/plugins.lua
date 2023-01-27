@@ -72,6 +72,12 @@ require("lazy").setup({
 	"junegunn/fzf",
 	"junegunn/fzf.vim",
 	"junegunn/vim-easy-align",
+	{
+		"jcdickinson/wpm.nvim",
+		config = function()
+			require("wpm").setup({})
+		end,
+	},
 	-- lualine with config
 	{
 		"nvim-lualine/lualine.nvim",
@@ -107,7 +113,7 @@ require("lazy").setup({
 					-- show the current filename and session name,
 					lualine_c = { "filename", require("auto-session-library").current_session_name },
 					lualine_x = { "encoding", "fileformat", "filetype" },
-					lualine_y = { "progress" },
+					lualine_y = { "progress", require("wpm").wpm, require("wpm").historic_graph },
 					lualine_z = { "location" },
 				},
 				inactive_sections = {

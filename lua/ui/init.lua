@@ -13,4 +13,4 @@ end
 require("ui.dashboard")
 require("ui.colorscheme")
 --[[ require("ui.colors.ember-fire") ]]
-require(chooseRandomColor())
+-- require(chooseRandomColor())

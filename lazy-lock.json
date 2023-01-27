@@ -64,6 +64,7 @@
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
   "vim-svelte-plugin": { "branch": "master", "commit": "a7161aed8dec74508bbf98224b7e68d63be1207a" },
   "which-key.nvim": { "branch": "main", "commit": "e4fa445065a2bb0bbc3cca85346b67817f28e83e" },
+  "wpm.nvim": { "branch": "main", "commit": "9e83c0f7d7d3c7fbdab14df1ce6367ded01b2653" },
   "zen-mode.nvim": { "branch": "main", "commit": "4313a5828e4d48c5f2f135f29d46f769a59dcfdc" },
   "zephyr-nvim": { "branch": "main", "commit": "7fd86b7164442d3b5ec2c81b2694d040e716b5cf" }
 }
