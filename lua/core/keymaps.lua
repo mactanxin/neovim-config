@@ -108,20 +108,19 @@ keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- -- Toggle NERDTree
--- mapcmd("tt", ":NERDTreeToggle")
 mapcmd("tt", ":NeoTreeShowToggle")
 mapcmd("<LEADER>r", ":NvimTreeRefresh")
 keymap("n", "<LEADER>p", ":w | !open %<CR>", opts) -- live preview files using dufault App
 
 -- jump back and forth in frames
-mapkey("n", "<LEADER>l", "<C-w>l", opts)
-mapkey("n", "<LEADER>h", "<C-w>h", opts)
-mapkey("n", "<LEADER>j", "<C-w>j", opts)
-mapkey("n", "<LEADER>k", "<C-w>k", opts)
-mapkey("n", "<LEADER><LEADER>", "<C-f>", opts)
-mapkey("n", "<LEADER>bb", "<C-b>", opts)
-mapkey("n", ";sv", "<C-w>t<C-w>H<CR>", opts)
-mapkey("n", ";sh", "<C-w>t<C-w>K<CR>", opts)
+mapkey("n", "<C-l>", "<C-w>l")
+mapkey("n", "<C-h>", "<C-w>h")
+mapkey("n", "<C-j>", "<C-w>j")
+mapkey("n", "<C-k>", "<C-w>k")
+mapkey("n", "<LEADER><LEADER>", "<C-f>")
+mapkey("n", "<LEADER>bb", "<C-b>")
+mapkey("n", ";sv", "<C-w>t<C-w>H<CR>")
+mapkey("n", ";sh", "<C-w>t<C-w>K<CR>")
 
 -- Comment
 maplua("<LEADER>/", 'require("Comment.api").locked("toggle.linewise.current")()')
@@ -183,7 +182,9 @@ mapkey("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 mapkey("n", "<leader>ft", "<cmd>Telescope notify<cr>")
 maplua("<leader>fs", "require('session-lens').search_session()")
 mapkey("n", "<leader>fe", "<cmd>Telescope file_browser<cr>")
-mapkey("n", "<leader>so", "<cmd>Telescope lsp_document_symbols<cr>")
+mapkey("n", "<leader>ds", "<cmd>Telescope lsp_document_symbols<cr>")
+mapkey("n", "<leader>lso", "<cmd>Lspsaga outline<CR>")
+vim.keymap.set({ "n", "t" }, "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
 -- telescope git commands
 mapkey("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", opts)
 mapkey("n", "<leader>gbc", "<cmd>Telescope git_bcommits<cr>", opts)
@@ -219,4 +220,3 @@ mapcmd("<leader>lg", ":LazyGit")
 
 -- TreeSJ
 mapcmd("T", ":TSJToggle<CR>")
-
