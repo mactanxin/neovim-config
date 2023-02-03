@@ -159,10 +159,10 @@ keymap("", "<LEADER>9", "9gt", opts)
 keymap("", "<LEADER>0", ":tablast<CR>", opts)
 
 -- split
-mapcmd("sl", "set splitright<CR>:vsplit<CR>")
-mapcmd("sh", "set nosplitright<CR>:vsplit<CR>")
-mapcmd("sk", "set splitbelow<CR>:split<CR>")
-mapcmd("sj", "set splitbelow<CR>:split<CR>")
+mapcmd("<leader>sl", "set splitright<CR>:vsplit<CR>")
+mapcmd("<leader>sh", "set nosplitright<CR>:vsplit<CR>")
+mapcmd("<leader>sk", "set splitbelow<CR>:split<CR>")
+mapcmd("<leader>sj", "set splitbelow<CR>:split<CR>")
 
 -- change split size using alt+arrow
 mapcmd("<M-left>", "vertical resize -5<cr>")
