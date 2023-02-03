@@ -68,7 +68,14 @@ require("lazy").setup({
 	"airblade/vim-rooter",
 	"ellisonleao/gruvbox.nvim",
 	"glepnir/zephyr-nvim",
-	"folke/tokyonight.nvim",
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {
+			style = "storm",
+		},
+	},
 	-- fzf
 	"junegunn/fzf",
 	"junegunn/fzf.vim",
@@ -627,25 +634,54 @@ require("lazy").setup({
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufReadPost",
-		config = function()
-			vim.opt.termguicolors = true
-			vim.opt.list = true
-			vim.opt.listchars:append("space:⋅")
-			vim.opt.listchars:append("eol:↴")
-			require("indent_blankline").setup({
-				space_char_blankline = " ",
-				show_current_context = true,
-				show_current_context_start = true,
-				char_highlight_list = {
-					"IndentBlanklineIndent1",
-					"IndentBlanklineIndent2",
-					"IndentBlanklineIndent3",
-					"IndentBlanklineIndent4",
-					"IndentBlanklineIndent5",
-					"IndentBlanklineIndent6",
-				},
-				show_end_of_line = true,
+		-- config = function()
+		-- 	vim.opt.termguicolors = true
+		-- 	vim.opt.list = true
+		-- 	vim.opt.listchars:append("space:⋅")
+		-- 	vim.opt.listchars:append("eol:↴")
+		-- 	require("indent_blankline").setup({
+		-- 		space_char_blankline = " ",
+		-- 		show_current_context = true,
+		-- 		show_current_context_start = true,
+		-- 		char_highlight_list = {
+		-- 			"IndentBlanklineIndent1",
+		-- 			"IndentBlanklineIndent2",
+		-- 			"IndentBlanklineIndent3",
+		-- 			"IndentBlanklineIndent4",
+		-- 			"IndentBlanklineIndent5",
+		-- 			"IndentBlanklineIndent6",
+		-- 		},
+		-- 		show_end_of_line = true,
+		-- 	})
+		-- end,
+		opts = {
+			-- char = "▏",
+			char = "│",
+			filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy" },
+			show_trailing_blankline_indent = false,
+			show_current_context = false,
+		},
+	},
+	-- active indent guide and indent text objects
+	{
+		"echasnovski/mini.indentscope",
+		version = false, -- wait till new 0.7.0 release to put it back on semver
+		event = "BufReadPre",
+		opts = {
+			-- symbol = "▏",
+			symbol = "│",
+			options = { try_as_border = true },
+		},
+		config = function(_, opts)
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason" },
+				callback = function()
+					vim.b.miniindentscope_disable = true
+					vim.b.miniindentscope_disable = true
+				end,
 			})
+			require("mini.indentscope").setup(opts)
+			require("mini.indentscope").setup(opts)
 		end,
 	},
 	{
@@ -695,7 +731,7 @@ require("lazy").setup({
 			html = { names = false },
 		},
 	},
-{ 	"easymotion/vim-easymotion", event = "VeryLazy", },
+	{ "easymotion/vim-easymotion", event = "VeryLazy" },
 	"wellle/context.vim",
 	"rmagatti/goto-preview",
 	"tpope/vim-surround",
@@ -719,6 +755,7 @@ require("lazy").setup({
 			})
 		end,
 	},
+	{ "echasnovski/mini.nvim", version = false },
 	{
 		"Wansmer/treesj",
 		dependencies = { "nvim-treesitter" },
