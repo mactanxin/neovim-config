@@ -356,6 +356,10 @@ require("lazy").setup({
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = { "vim", "lua", "rust", "vue", "typescript", "javascript", "html", "css", "help" },
 				highlight = { enable = true },
+				indent = {
+					enable = true,
+					disable = { "yaml" },
+				},
 				rainbow = {
 					enable = true,
 					-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
@@ -744,6 +748,7 @@ require("lazy").setup({
 	{ "tpope/vim-repeat", event = "VeryLazy" },
 	{
 		"koenverburg/peepsight.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("peepsight").setup({
 				-- go
@@ -773,7 +778,6 @@ require("lazy").setup({
 		"leafOfTree/vim-svelte-plugin",
 		lazy = false,
 		ft = { "svelte" },
-
 	},
 	{
 		"folke/zen-mode.nvim",
