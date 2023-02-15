@@ -639,6 +639,9 @@ require("lazy").setup({
 		"leafOfTree/vim-svelte-plugin",
 		lazy = false,
 		ft = { "svelte" },
+		config = function()
+		  vim.g.vim_svelte_plugin_use_typescript=1
+    end
 	},
 	{
 		"folke/zen-mode.nvim",
