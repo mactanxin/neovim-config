@@ -543,28 +543,7 @@ require("lazy").setup({
   {
     "lukas-reineke/indent-blankline.nvim",
     event = "BufReadPost",
-    -- config = function()
-    -- 	vim.opt.termguicolors = true
-    -- 	vim.opt.list = true
-    -- 	vim.opt.listchars:append("space:⋅")
-    -- 	vim.opt.listchars:append("eol:↴")
-    -- 	require("indent_blankline").setup({
-    -- 		space_char_blankline = " ",
-    -- 		show_current_context = true,
-    -- 		show_current_context_start = true,
-    -- 		char_highlight_list = {
-    -- 			"IndentBlanklineIndent1",
-    -- 			"IndentBlanklineIndent2",
-    -- 			"IndentBlanklineIndent3",
-    -- 			"IndentBlanklineIndent4",
-    -- 			"IndentBlanklineIndent5",
-    -- 			"IndentBlanklineIndent6",
-    -- 		},
-    -- 		show_end_of_line = true,
-    -- 	})
-    -- end,
     opts = {
-      -- char = "▏",
       char = "│",
       filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy" },
       show_trailing_blankline_indent = false,
@@ -586,10 +565,8 @@ require("lazy").setup({
         pattern = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason" },
         callback = function()
           vim.b.miniindentscope_disable = true
-          vim.b.miniindentscope_disable = true
         end,
       })
-      require("mini.indentscope").setup(opts)
       require("mini.indentscope").setup(opts)
     end,
   },
@@ -632,14 +609,6 @@ require("lazy").setup({
     lazy = false,
   },
   "mattn/emmet-vim",
-  -- {
-  --   "norcalli/nvim-colorizer.lua",
-  --   opts = {
-  --     "*",
-  --     css = { rgb_fn = true },
-  --     html = { names = false },
-  --   },
-  -- },
   { "easymotion/vim-easymotion", event = "VeryLazy" },
   "wellle/context.vim",
   "rmagatti/goto-preview",
