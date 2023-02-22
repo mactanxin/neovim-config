@@ -336,6 +336,37 @@ require("lazy").setup({
     end,
   },
   {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require('lspconfig')['tailwindcss'].setup {}
+    end
+  },
+  {
+    "NvChad/nvim-colorizer.lua",
+    opts = {
+      user_default_options = {
+        rgb_fn = true,
+        css = true,
+        css_fn = true,
+        tailwind = true,
+      },
+    },
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
+    },
+    -- opts = function(_, opts)
+    --   -- original LazyVim kind icon formatter
+    --   local format_kinds = opts.formatting.format
+    --   opts.formatting.format = function(entry, item)
+    --     format_kinds(entry, item) -- add icons
+    --     return require("tailwindcss-colorizer-cmp").formatter(entry, item)
+    --   end
+    -- end,
+  },
+  {
     "glepnir/lspsaga.nvim",
     keys = {
       { "gpr",         "<cmd>Lspsaga lsp_finder<CR>",           "n" },
@@ -423,6 +454,9 @@ require("lazy").setup({
       popup_border_style = "rounded",
       enable_git_status = true,
       enable_diagnostics = true,
+      filesystem = {
+        follow_current_file = true,
+      }
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -593,14 +627,14 @@ require("lazy").setup({
     lazy = false,
   },
   "mattn/emmet-vim",
-  {
-    "norcalli/nvim-colorizer.lua",
-    opts = {
-      "*",
-      css = { rgb_fn = true },
-      html = { names = false },
-    },
-  },
+  -- {
+  --   "norcalli/nvim-colorizer.lua",
+  --   opts = {
+  --     "*",
+  --     css = { rgb_fn = true },
+  --     html = { names = false },
+  --   },
+  -- },
   { "easymotion/vim-easymotion", event = "VeryLazy" },
   "wellle/context.vim",
   "rmagatti/goto-preview",
@@ -651,5 +685,21 @@ require("lazy").setup({
         -- refer to the configuration section below
       })
     end,
+  },
+  checker = { enabled = true }, -- automatically check for plugin updates
+  performance = {
+    rtp = {
+      -- disable some rtp plugins
+      disabled_plugins = {
+        "gzip",
+        -- "matchit",
+        -- "matchparen",
+        -- "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
   },
 })
