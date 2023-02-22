@@ -309,20 +309,25 @@ require("lazy").setup({
   -- lsp related
   {
     "VonHeikemen/lsp-zero.nvim",
+    branch = "v1.x",
     dependencies = {
+      -- LSP Support
+      "neovim/nvim-lspconfig", -- required
       "lukas-reineke/lsp-format.nvim",
-      "neovim/nvim-lspconfig",
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "hrsh7th/nvim-cmp",
-      "hrsh7th/cmp-buffer",
+
+      -- Autocompletion
+      "hrsh7th/nvim-cmp", --required
+      "hrsh7th/cmp-nvim-lsp", --required
+      "hrsh7th/cmp-buffer", -- Optional
       "hrsh7th/cmp-path",
       "saadparwaiz1/cmp_luasnip",
-      "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lua",
       "L3MON4D3/LuaSnip",
       "rafamadriz/friendly-snippets",
       "onsails/lspkind-nvim",
+      "roobert/tailwindcss-colorizer-cmp.nvim"
     },
     config = function()
       local lsp = require("lsp-zero")
