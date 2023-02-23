@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  { "LazyVim/LazyVim", },
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
@@ -344,7 +345,21 @@ require("lazy").setup({
     "neovim/nvim-lspconfig",
     config = function()
       require('lspconfig')['tailwindcss'].setup {}
-    end
+      require('lspconfig')['tsserver'].setup {}
+      require('lspconfig').tsserver.setup {
+        require("typescript").setup({ server = opts })
+      }
+    end,
+    dependencies = {
+      "jose-elias-alvarez/typescript.nvim",
+      init = function()
+        require("lazyvim.util").on_attach(function(_, buffer)
+          -- stylua: ignore
+          vim.keymap.set("n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
+          vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
+        end)
+      end,
+    },
   },
   {
     "NvChad/nvim-colorizer.lua",
@@ -522,7 +537,7 @@ require("lazy").setup({
     },
     ft = { "vue", "javascript", "typescript", "svelte" },
   },
-  { "goolord/alpha-nvim",      event = "VimEnter" },
+  { "goolord/alpha-nvim",        event = "VimEnter" },
   {
     "declancm/cinnamon.nvim",
     enabled = true,
@@ -614,7 +629,7 @@ require("lazy").setup({
   "rmagatti/goto-preview",
   "tpope/vim-surround",
   "AndrewRadev/tagalong.vim",
-  { "tpope/vim-repeat",          event = "VeryLazy" },
+  { "tpope/vim-repeat",      event = "VeryLazy" },
   {
     "koenverburg/peepsight.nvim",
     event = "VeryLazy",
