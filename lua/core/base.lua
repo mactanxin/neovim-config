@@ -16,3 +16,6 @@ vim.g.loaded_remote_plugins = 1
 vim.g.cursorhold_updatetime = 100
 -- use emmet
 vim.g.user_emmet_mode = "a"
+vim.diagnostic.config({
+  virtual_text = false,
+})
