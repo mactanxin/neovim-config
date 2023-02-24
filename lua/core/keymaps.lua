@@ -12,26 +12,26 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local function mapkey(mode, lhs, rhs)
-	vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true })
+  vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true })
 end
 
 local function mapcmd(key, cmd)
-	vim.api.nvim_set_keymap("n", key, ":" .. cmd .. "<cr>", { noremap = true })
+  vim.api.nvim_set_keymap("n", key, ":" .. cmd .. "<cr>", { noremap = true })
 end
 
 local function maplua(key, txt)
-	vim.api.nvim_set_keymap("n", key, ":lua " .. txt .. "<cr>", { noremap = true })
+  vim.api.nvim_set_keymap("n", key, ":lua " .. txt .. "<cr>", { noremap = true })
 end
 
 local function is_available(plugin)
-	return packer_plugins ~= nil and packer_plugins[plugin] ~= nil
+  return packer_plugins ~= nil and packer_plugins[plugin] ~= nil
 end
 
 local function toast(msg, level)
-	vim.notify(msg, level, {
-		title = "My custom notification",
-		timeout = 5000,
-	})
+  vim.notify(msg, level, {
+    title = "My custom notification",
+    timeout = 5000,
+  })
 end
 
 vim.cmd([[
@@ -83,11 +83,13 @@ mapkey("x", "<leader>o", '"_dP')
 --   command_mode = "c",
 --
 keymap(
-	"n",
-	"S",
-	":w<CR> :lua vim.notify('Save Complete', 'info', { title = 'User Operation', timeout = 1000, stages = 'fade_in_slide_out'})<CR>",
-	opts
+  "n",
+  "S",
+  ":w<CR> :lua vim.notify('Save Complete', 'info', { title = 'User Operation', timeout = 1000, stages = 'fade_in_slide_out'})<CR>",
+  opts
 )
+--select all text
+keymap("n", '<C-a>', "gg<S-v>G", opts)
 keymap("n", "Q", ":q<CR>", opts)
 keymap("n", "Z", ":q!<CR>", opts)
 mapcmd("R", "ReloadConfig<CR>")
@@ -96,8 +98,8 @@ keymap("", "cd", ":chdir", opts)
 -- Visual --
 -- Stay in indent mode
 if is_available("Comment.nvim") then
-	keymap("v", "<", "<gv", opts)
-	keymap("v", ">", ">gv", opts)
+  keymap("v", "<", "<gv", opts)
+  keymap("v", ">", ">gv", opts)
 end
 
 -- Visual Block --
@@ -125,20 +127,20 @@ mapkey("n", ";sh", "<C-w>t<C-w>K<CR>")
 -- Comment
 maplua("<LEADER>/", 'require("Comment.api").locked("toggle.linewise.current")()')
 keymap(
-	"v",
-	"<LEADER>/",
-	'<esc><cmd>lua require("Comment.api").locked("comment.linewise")(vim.fn.visualmode())<CR>',
-	opts
+  "v",
+  "<LEADER>/",
+  '<esc><cmd>lua require("Comment.api").locked("comment.linewise")(vim.fn.visualmode())<CR>',
+  opts
 )
 vim.keymap.set("n", "<leader>sr", "", {
-	silent = true,
-	desc = "reload init.lua",
-	callback = function()
-		vim.cmd([[
+  silent = true,
+  desc = "reload init.lua",
+  callback = function()
+    vim.cmd([[
       source $MYVIMRC
     ]])
-		vim.notify("Nvim config successfully reloaded!", vim.log.levels.INFO, { title = "nvim-config" })
-	end,
+    vim.notify("Nvim config successfully reloaded!", vim.log.levels.INFO, { title = "nvim-config" })
+  end,
 })
 
 keymap("", "<LEADER>cd", ":cd %:p:h<CR>:pwd<CR>", opts)
@@ -220,3 +222,6 @@ mapcmd("<leader>lg", ":LazyGit")
 
 -- TreeSJ
 mapcmd("T", ":TSJToggle<CR>")
+
+-- Lsp_lines
+mapkey("n", "<leader>ll", ":lua require('lsp_lines').toggle<cr>")
