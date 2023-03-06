@@ -58,6 +58,7 @@ mapcmd("s", "<Nop>")
 mapcmd("S", "<Nop>")
 mapcmd("R", "<Nop>")
 mapcmd("<LEADER><CR>", "noh")
+mapcmd("<Leader>O", "%bd|e#|bd#")
 
 mapcmd("<LEADER>d", "Alpha")
 
