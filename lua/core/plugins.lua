@@ -676,6 +676,19 @@ require("lazy").setup({
       })
     end,
   },
+  {
+    'VonHeikemen/searchbox.nvim',
+    config = function()
+      require('searchbox').setup({
+        popup = {
+          position = {
+            row = '50%',
+            col = '50%'
+          }
+        }
+      })
+    end
+  },
   checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
     rtp = {
