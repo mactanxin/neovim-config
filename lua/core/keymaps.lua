@@ -90,7 +90,7 @@ keymap(
   opts
 )
 --select all text
-keymap("n", '<C-a>', "gg<S-v>G", opts)
+mapkey("n", '<C-a>', "gg<S-v>G")
 keymap("n", "Q", ":q<CR>", opts)
 keymap("n", "Z", ":q!<CR>", opts)
 mapcmd("R", "ReloadConfig<CR>")
