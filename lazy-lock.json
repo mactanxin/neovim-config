@@ -55,6 +55,7 @@
   "peepsight.nvim": { "branch": "main", "commit": "ea5f36e0fb99223da138e6e719ede5baf4f0d002" },
   "plenary.nvim": { "branch": "master", "commit": "253d34830709d690f013daf2853a9d21ad7accab" },
   "promise-async": { "branch": "main", "commit": "7fa127fa80e7d4d447e0e2c78e99af4355f4247b" },
+  "searchbox.nvim": { "branch": "main", "commit": "110949af8963185b4e732b45ae57beb731bfcede" },
   "session-lens": { "branch": "main", "commit": "b15e36782d01abacf6cd44e12f3292632064ab91" },
   "tabline.nvim": { "branch": "main", "commit": "5d76dc8616b4b7b892229cc05cd0f4cd0200077a" },
   "tagalong.vim": { "branch": "main", "commit": "7b8cf57d8b5cbf5ece29e8198e72e8db39d9fe26" },
