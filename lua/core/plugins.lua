@@ -92,7 +92,7 @@ require("lazy").setup({
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     lazy = false,
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons", "linrongbin16/lsp-progress.nvim" },
     config = function()
       require("lualine").setup({
         options = {
@@ -124,7 +124,7 @@ require("lazy").setup({
           lualine_c = { "filename", require("auto-session-library").current_session_name },
           lualine_x = { "encoding", "fileformat", "filetype" },
           lualine_y = { "progress", require("wpm").wpm, require("wpm").historic_graph },
-          lualine_z = { "location" },
+          lualine_z = { "location", require("lsp-progress").progress },
         },
         inactive_sections = {
           lualine_a = {},
@@ -145,6 +145,23 @@ require("lazy").setup({
         extensions = { "fzf", "neo-tree", "fugitive" },
       })
     end,
+  },
+  {
+    'linrongbin16/lsp-progress.nvim',
+    branch = 'main',
+    event = { 'VimEnter' },
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require('lsp-progress').setup({})
+      vim.cmd([[
+augroup lualine_augroup
+  autocmd!
+  autocmd User LspProgressStatusUpdated lua require("lualine").refresh()
+augroup END
+]])
+    end
   },
   -- tabline with config
   {
@@ -481,7 +498,7 @@ require("lazy").setup({
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
     },
   },
@@ -687,6 +704,16 @@ require("lazy").setup({
           }
         }
       })
+    end
+  },
+  {
+    'Exafunction/codeium.vim',
+    config = function()
+      -- Change '<C-g>' here to any keycode you like.
+      vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+      vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+      vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions']( -1) end, { expr = true })
+      vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
     end
   },
   checker = { enabled = true }, -- automatically check for plugin updates
