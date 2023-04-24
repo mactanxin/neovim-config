@@ -75,7 +75,22 @@ require("lazy").setup({
     priority = 1000,
     opts = {
       style = "storm",
+      transparent = true,
+      dim_inactive = true
     },
+  },
+  {
+    'Mofiqul/dracula.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      local dracula = require("dracula")
+      dracula.setup({
+        colors = { bg = "NONE" },
+        transparent_bg = true,
+        show_end_of_buffer = true
+      })
+    end
   },
   -- fzf
   "junegunn/fzf",
@@ -690,6 +705,35 @@ augroup END
         -- your configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
+      })
+    end,
+  },
+  {
+    "Bryley/neoai.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    cmd = {
+      "NeoAI",
+      "NeoAIOpen",
+      "NeoAIClose",
+      "NeoAIToggle",
+      "NeoAIContext",
+      "NeoAIContextOpen",
+      "NeoAIContextClose",
+      "NeoAIInject",
+      "NeoAIInjectCode",
+      "NeoAIInjectContext",
+      "NeoAIInjectContextCode",
+    },
+    keys = {
+      { "<leader>as", desc = "summarize text" },
+      { "<leader>ag", desc = "generate git message" },
+    },
+    config = function()
+      require("neoai").setup({
+        open_ai_key_env = "OPEN_API_KEY"
+        -- Options go here
       })
     end,
   },
