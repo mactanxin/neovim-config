@@ -727,8 +727,8 @@ augroup END
       "NeoAIInjectContextCode",
     },
     keys = {
-      { "<leader>as", desc = "summarize text" },
-      { "<leader>ag", desc = "generate git message" },
+      { "<leader>ans", desc = "summarize text" },
+      { "<leader>ag",  desc = "generate git message" },
     },
     config = function()
       require("neoai").setup({

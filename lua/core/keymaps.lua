@@ -226,3 +226,6 @@ mapcmd("T", ":TSJToggle<CR>")
 
 -- Lsp_lines
 mapkey("n", "<leader>ll", ":lua require('lsp_lines').toggle<cr>")
+
+-- NeoAI
+mapkey("n", "<leader>ai", ":NeoAI<cr>")
