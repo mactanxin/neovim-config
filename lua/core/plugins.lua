@@ -62,6 +62,12 @@ require("lazy").setup({
     },
   },
   {
+    "rcarriga/nvim-notify",
+    opts = {
+      background_colour = "#000000"
+    }
+  },
+  {
     "Shatur/neovim-ayu",
     lazy = false,
     priority = 1000,
