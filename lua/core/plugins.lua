@@ -136,7 +136,7 @@ require("lazy").setup({
           },
           lualine_b = { "branch", "diff", "diagnostics" },
           -- show the current filename and session name,
-          lualine_c = { "filename", require("auto-session-library").current_session_name },
+          lualine_c = { "filename", require("auto-session.lib").current_session_name },
           lualine_x = { "encoding", "fileformat", "filetype" },
           lualine_y = { "progress", require("wpm").wpm, require("wpm").historic_graph },
           lualine_z = { "location", require("lsp-progress").progress },
