@@ -1,4 +1,4 @@
-# [Neovim](https://neovim.io/) Ver 0.8 config
+# [Neovim](https://neovim.io/) Ver 0.9 config
 
 ![doom-dashboard](https://github.com/mactanxin/neovim-config/raw/main/screenshots/dashboard.jpg)
 
@@ -8,3 +8,7 @@
 
 With [Lazy](https://github.com/folke/lazy.nvim) 💤 plugin manager
 
+# Breaking changes for now
+
+[Fix auto-session](https://github.com/rmagatti/session-lens/pull/42/files) regarding this bug for now,
+manually patch the file after upgrade to nvim 0.9
