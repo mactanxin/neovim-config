@@ -72,6 +72,9 @@ require("lazy").setup({
     lazy = false,
     priority = 1000,
   },
+  { "catppuccin/nvim", name = "catppuccin" },
+  'navarasu/onedark.nvim',
+  'hardhackerlabs/theme-vim',
   "airblade/vim-rooter",
   "ellisonleao/gruvbox.nvim",
   "glepnir/zephyr-nvim",
@@ -198,13 +201,13 @@ augroup END
           section_separators = { "", "" },
           component_separators = { "", "" },
           max_bufferline_percent = 66, -- set to nil by default, and it uses vim.o.columns * 2/3
-          show_tabs_always = false, -- this shows tabs only when there are more than one tab or if the first tab is named
-          show_devicons = true, -- this shows devicons in buffer section
-          show_bufnr = false, -- this appends [bufnr] to buffer section,
-          show_filename_only = false, -- shows base filename only instead of relative path in filename
-          modified_icon = "+ ", -- change the default modified icon
-          modified_italic = false, -- set to true by default; this determines whether the filename turns italic if modified
-          show_tabs_only = true, -- this shows only tabs instead of tabs + buffers
+          show_tabs_always = false,    -- this shows tabs only when there are more than one tab or if the first tab is named
+          show_devicons = true,        -- this shows devicons in buffer section
+          show_bufnr = false,          -- this appends [bufnr] to buffer section,
+          show_filename_only = false,  -- shows base filename only instead of relative path in filename
+          modified_icon = "+ ",        -- change the default modified icon
+          modified_italic = false,     -- set to true by default; this determines whether the filename turns italic if modified
+          show_tabs_only = true,       -- this shows only tabs instead of tabs + buffers
         },
       })
       vim.cmd([[
@@ -357,9 +360,9 @@ augroup END
       "williamboman/mason-lspconfig.nvim",
 
       -- Autocompletion
-      "hrsh7th/nvim-cmp", --required
+      "hrsh7th/nvim-cmp",     --required
       "hrsh7th/cmp-nvim-lsp", --required
-      "hrsh7th/cmp-buffer", -- Optional
+      "hrsh7th/cmp-buffer",   -- Optional
       "hrsh7th/cmp-path",
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lua",
@@ -483,7 +486,7 @@ augroup END
             -- mapping query_strings to modes.
             selection_modes = {
               ["@parameter.outer"] = "v", -- charwise
-              ["@function.outer"] = "V", -- linewise
+              ["@function.outer"] = "V",  -- linewise
               ["@class.outer"] = "<c-v>", -- blockwise
             },
             -- If you set this to `true` (default is `false`) then any textobject is
@@ -576,7 +579,7 @@ augroup END
     },
     ft = { "vue", "javascript", "typescript", "svelte" },
   },
-  { "goolord/alpha-nvim",        event = "VimEnter" },
+  { "goolord/alpha-nvim",      event = "VimEnter" },
   {
     "declancm/cinnamon.nvim",
     enabled = true,
@@ -584,12 +587,12 @@ augroup END
     config = function()
       require("cinnamon").setup({
         -- KEYMAPS:
-        default_keymaps = true, -- Create default keymaps.
-        extra_keymaps = false, -- Create extra keymaps.
+        default_keymaps = true,   -- Create default keymaps.
+        extra_keymaps = false,    -- Create extra keymaps.
         extended_keymaps = false, -- Create extended keymaps.
         override_keymaps = false, -- The plugin keymaps will override any existing keymaps.
         -- OPTIONS:
-        always_scroll = false, -- Scroll the cursor even when the window hasn't scrolled.
+        always_scroll = false,    -- Scroll the cursor even when the window hasn't scrolled.
       })
     end,
   },
@@ -668,7 +671,7 @@ augroup END
   "rmagatti/goto-preview",
   "tpope/vim-surround",
   "AndrewRadev/tagalong.vim",
-  { "tpope/vim-repeat",      event = "VeryLazy" },
+  { "tpope/vim-repeat",          event = "VeryLazy" },
   {
     "koenverburg/peepsight.nvim",
     event = "VeryLazy",
@@ -762,7 +765,7 @@ augroup END
       -- Change '<C-g>' here to any keycode you like.
       vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true })
       vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
-      vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions']( -1) end, { expr = true })
+      vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
       vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
     end
   },
