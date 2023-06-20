@@ -65,7 +65,6 @@ require("lazy").setup({
     "folke/paint.nvim",
     config = function()
       require("paint").setup({
-        ---@type PaintHighlight[]
         highlights = {
           {
             -- filter can be a table of buffer options that should match,
@@ -582,6 +581,8 @@ augroup END
       require("gitsigns").setup({
         signcolumn = true,
         current_line_blame = true,
+        linehl = true,
+        word_diff = true
       })
     end,
   },
