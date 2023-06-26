@@ -464,7 +464,7 @@ augroup END
     event = "BufReadPost",
     config = function()
       require("nvim-treesitter.configs").setup({
-        ensure_installed = { "vim", "lua", "rust", "vue", "typescript", "javascript", "html", "css", "help" },
+        ensure_installed = { "vim", "lua", "rust", "vue", "typescript", "javascript", "html", "css", "help", "svelte" },
         highlight = { enable = true },
         indent = {
           enable = true,
@@ -518,10 +518,15 @@ augroup END
             include_surrounding_whitespace = true,
           },
         },
+        context_commentstring = {
+          enable = true,
+          enable_autocmd = false,
+        },
       })
     end,
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
+      'JoosepAlviste/nvim-ts-context-commentstring',
     },
   },
   -- neotree
@@ -545,12 +550,13 @@ augroup END
   },
   { "akinsho/toggleterm.nvim", opts = { open_mapping = [[<c-\>]], direction = "tab" } },
   {
-    "terrortylor/nvim-comment",
+    "numToStr/Comment.nvim",
     config = function()
-      require("nvim_comment").setup()
-    end,
+      require('Comment').setup {
+        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+      }
+    end
   },
-  "numToStr/Comment.nvim",
   {
     "kevinhwang91/nvim-ufo",
     dependencies = { "kevinhwang91/promise-async" },
@@ -684,6 +690,12 @@ augroup END
     "p00f/nvim-ts-rainbow",
     lazy = false,
   },
+  {
+    'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      'JoosepAlviste/nvim-ts-context-commentstring',
+    },
+  },
   "mattn/emmet-vim",
   { "easymotion/vim-easymotion", event = "VeryLazy" },
   "wellle/context.vim",
@@ -711,6 +723,17 @@ augroup END
     end,
   },
   { "echasnovski/mini.nvim", version = false },
+  {
+    "echasnovski/mini.files",
+    version = false,
+    config = function()
+      require("mini.files").setup({
+        windows = {
+          preview = true
+        }
+      })
+    end
+  },
   {
     "Wansmer/treesj",
     dependencies = { "nvim-treesitter" },
