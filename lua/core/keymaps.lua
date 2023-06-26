@@ -231,6 +231,9 @@ mapkey("n", "<leader>ll", ":lua require('lsp_lines').toggle<cr>")
 -- NeoAI
 mapkey("n", "<leader>ai", ":NeoAI<cr>")
 
+-- Mini.Files
+mapkey("n", "<leader>kf", ":lua MiniFiles.open()<cr>")
+
 -- auto add double qoutes in html attribute
 vim.keymap.set('i', '=', function()
   local cursor = vim.api.nvim_win_get_cursor(0)
