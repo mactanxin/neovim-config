@@ -74,6 +74,36 @@ require("lazy").setup({
             pattern = "%s*%-%-%-%s*(@%w+)",
             hl = "Constant",
           },
+          {
+            filter = { filetype = "javascript" },
+            pattern = "%s*%/%/%s*(@%w+)",
+            hl = "Constant",
+          },
+          {
+            filter = { filetype = "javascript" },
+            pattern = "%s*%*%s*(@%w+)",
+            hl = "Constant",
+          },
+          {
+            filter = { filetype = "typescript" },
+            pattern = "%s*%/%/%s*(@%w+)",
+            hl = "Constant",
+          },
+          {
+            filter = { filetype = "typescript" },
+            pattern = "%s*%*%s*(@%w+)",
+            hl = "Constant",
+          },
+          {
+            filter = { filetype = "vue" },
+            pattern = "%s*%/%/%s*(@%w+)",
+            hl = "Constant",
+          },
+          {
+            filter = { filetype = "svelte" },
+            pattern = "%s*%/%/%s*(@%w+)",
+            hl = "Constant",
+          },
         },
       })
     end,
@@ -424,7 +454,8 @@ augroup END
     config = function()
       require("lsp_lines").setup()
       vim.diagnostic.config({
-        virtual_text = false
+        severity_sort = true,
+        virtual_text = false,
       })
     end,
   },
