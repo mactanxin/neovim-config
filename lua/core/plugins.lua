@@ -842,6 +842,10 @@ augroup END
       vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
     end
   },
+  {
+    "iamcco/markdown-preview.nvim",
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
   checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
     rtp = {
