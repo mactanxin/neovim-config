@@ -17,4 +17,4 @@ require("telescope").load_extension("notify")
 require("telescope").load_extension("file_browser")
 
 vim.cmd([[colorscheme tokyonight-storm]])
-vim.cmd([[hi Visual  guifg=White guibg=LightBlue gui=none]])
+vim.cmd([[hi Visual guifg=White guibg=LightBlue gui=none]])
