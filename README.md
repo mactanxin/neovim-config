@@ -1,6 +1,13 @@
 # [Neovim](https://neovim.io/) Ver 0.9 config
 
+Futurama Theme
+
+![doom-dashboard](https://github.com/mactanxin/neovim-config/raw/main/screenshots/futurama.png)
+
+Doom Theme
+
 ![doom-dashboard](https://github.com/mactanxin/neovim-config/raw/main/screenshots/dashboard.jpg)
+
 
 
 
