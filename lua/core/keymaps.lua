@@ -177,7 +177,7 @@ mapcmd("tn", "tabe")
 mapcmd("th", "-tabnext")
 mapcmd("tl", "+tabnext")
 
-mapkey("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
+mapkey("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<CR>")
 mapkey("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
 mapkey("n", "<leader>fc", "<cmd>Telescope git_commits<CR>")
 mapkey("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
