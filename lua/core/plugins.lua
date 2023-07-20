@@ -581,6 +581,15 @@ augroup END
       enable_git_status = true,
       enable_diagnostics = true,
       filesystem = {
+        filtered_items = {
+          hide_dotfiles = false,
+          hide_gitignored = true,
+          hide_by_name = {
+            '.git',
+            '.DS_Store',
+            'thumbs.db'
+          }
+        },
         follow_current_file = true,
       }
     },
