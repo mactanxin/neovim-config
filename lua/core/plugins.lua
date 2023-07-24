@@ -479,7 +479,7 @@ augroup END
   {
     "glepnir/lspsaga.nvim",
     keys = {
-      { "gpr",         "<cmd>Lspsaga lsp_finder<CR>",           "n" },
+      { "gpr",         "<cmd>Lspsaga finder<CR>",               "n" },
       { "<leader>lr",  "<cmd>Lspsaga rename<CR>" },
       { "<leader>la",  "<cmd>Lspsaga code_action<CR>",          "n, v" },
       { "gpd",         "<cmd>Lspsaga peek_definition<CR>" },
@@ -492,12 +492,12 @@ augroup END
       { "<leader>so",  "<cmd>Lspsaga outline<CR>" },
       { "K",           "<cmd>Lspsaga hover_doc<CR>" },
     },
-    opts = {
-      beacon = {
-        enable = true,
-        frequency = 7,
-      },
-    }
+    event = "LspAttach",
+    ft = { "typescript", "javascript", "vue", "svelte", "markdown", "react", "json", "lua", "sh", "python" },
+    config = function()
+      require("lspsaga").setup({
+      })
+    end
   },
   -- treesitter
   {
@@ -506,20 +506,20 @@ augroup END
     event = "BufReadPost",
     config = function()
       require("nvim-treesitter.configs").setup({
-        ensure_installed = { "vim", "lua", "rust", "vue", "typescript", "javascript", "html", "css", "help", "svelte" },
+        ensure_installed = { "vim", "lua", "rust", "vue", "typescript", "javascript", "html", "css", "svelte" },
         highlight = { enable = true },
         indent = {
           enable = true,
           disable = { "yaml" },
         },
-        rainbow = {
-          enable = true,
-          -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-          extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-          max_file_lines = nil, -- Do not enable for files with more than n lines, int
-          -- colors = {}, -- table of hex strings
-          -- termcolors = {} -- table of colour name strings
-        },
+        -- rainbow = {
+        --   enable = true,
+        --   -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+        --   extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+        --   max_file_lines = nil, -- Do not enable for files with more than n lines, int
+        --   -- colors = {}, -- table of hex strings
+        --   -- termcolors = {} -- table of colour name strings
+        -- },
         textobjects = {
           select = {
             enable = true,
@@ -705,6 +705,7 @@ augroup END
   },
   {
     "windwp/nvim-ts-autotag",
+    event = "LspAttach",
     opts = {
       autotag = {
         enable = true,

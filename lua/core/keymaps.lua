@@ -232,7 +232,7 @@ mapkey("n", "<leader>ll", ":lua require('lsp_lines').toggle<cr>")
 mapkey("n", "<leader>ai", ":NeoAI<cr>")
 
 -- Mini.Files
-mapkey("n", "<leader>kf", ":lua MiniFiles.open()<cr>")
+mapkey("n", "<leader>mf", ":lua MiniFiles.open()<cr>")
 
 -- auto add double qoutes in html attribute
 vim.keymap.set('i', '=', function()
