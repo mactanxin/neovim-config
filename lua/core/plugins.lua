@@ -119,6 +119,32 @@ require("lazy").setup({
 		lazy = false,
 		priority = 1000,
 	},
+	{
+		"piersolenski/wtf.nvim",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
+		event = "VeryLazy",
+		opts = {},
+		keys = {
+			{
+				"<leader>gw",
+				mode = { "n" },
+				function()
+					require("wtf").ai()
+				end,
+				desc = "Debug diagnostic with AI",
+			},
+			{
+				mode = { "n" },
+				"<leader>gW",
+				function()
+					require("wtf").search()
+				end,
+				desc = "Search diagnostic with Google",
+			},
+		},
+	},
 	{ "catppuccin/nvim", name = "catppuccin" },
 	"navarasu/onedark.nvim",
 	"hardhackerlabs/theme-vim",
@@ -253,6 +279,7 @@ require("lazy").setup({
 					gui = "bold",
 				},
 			}
+			local wtf = require("wtf")
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
@@ -282,7 +309,7 @@ require("lazy").setup({
 					-- show the current filename and session name,
 					lualine_c = { "filename", require("auto-session.lib").current_session_name },
 					lualine_x = { "encoding", "filetype" },
-					lualine_y = { "progress", require("wpm").wpm, require("wpm").historic_graph },
+					lualine_y = { "wtf.get_status", "progress", require("wpm").wpm, require("wpm").historic_graph },
 					lualine_z = { attached_clients, "location", require("lsp-progress").progress },
 				},
 				inactive_sections = {
@@ -352,10 +379,10 @@ augroup END
 			vim.notify("init tabline", "info")
 		end,
 	},
-	{
-		"kosayoda/nvim-lightbulb",
-		dependencies = { "antoinemadec/FixCursorHold.nvim" },
-	},
+	-- {
+	-- 	"kosayoda/nvim-lightbulb",
+	-- 	dependencies = { "antoinemadec/FixCursorHold.nvim" },
+	-- },
 	-- telescope
 	{
 		"nvim-telescope/telescope.nvim",
