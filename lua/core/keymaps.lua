@@ -12,26 +12,26 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local function mapkey(mode, lhs, rhs)
-  vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true })
+	vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true })
 end
 
 local function mapcmd(key, cmd)
-  vim.api.nvim_set_keymap("n", key, ":" .. cmd .. "<cr>", { noremap = true })
+	vim.api.nvim_set_keymap("n", key, ":" .. cmd .. "<cr>", { noremap = true })
 end
 
 local function maplua(key, txt)
-  vim.api.nvim_set_keymap("n", key, ":lua " .. txt .. "<cr>", { noremap = true })
+	vim.api.nvim_set_keymap("n", key, ":lua " .. txt .. "<cr>", { noremap = true })
 end
 
 local function is_available(plugin)
-  return packer_plugins ~= nil and packer_plugins[plugin] ~= nil
+	return packer_plugins ~= nil and packer_plugins[plugin] ~= nil
 end
 
 local function toast(msg, level)
-  vim.notify(msg, level, {
-    title = "My custom notification",
-    timeout = 5000,
-  })
+	vim.notify(msg, level, {
+		title = "My custom notification",
+		timeout = 5000,
+	})
 end
 
 vim.cmd([[
@@ -84,13 +84,13 @@ mapkey("x", "<leader>o", '"_dP')
 --   command_mode = "c",
 --
 keymap(
-  "n",
-  "S",
-  ":w<CR> :lua vim.notify('Save Complete', 'info', { title = 'User Operation', timeout = 1000, stages = 'fade_in_slide_out'})<CR>",
-  opts
+	"n",
+	"S",
+	":w<CR> :lua vim.notify('Save Complete', 'info', { title = 'User Operation', timeout = 1000, stages = 'fade_in_slide_out'})<CR>",
+	opts
 )
 --select all text
-mapkey("n", '<C-a>', "gg<S-v>G")
+mapkey("n", "<C-a>", "gg<S-v>G")
 keymap("n", "Q", ":q<CR>", opts)
 keymap("n", "Z", ":q!<CR>", opts)
 mapcmd("R", "ReloadConfig<CR>")
@@ -99,8 +99,8 @@ keymap("", "cd", ":chdir", opts)
 -- Visual --
 -- Stay in indent mode
 if is_available("Comment.nvim") then
-  keymap("v", "<", "<gv", opts)
-  keymap("v", ">", ">gv", opts)
+	keymap("v", "<", "<gv", opts)
+	keymap("v", ">", ">gv", opts)
 end
 
 -- Visual Block --
@@ -128,20 +128,20 @@ mapkey("n", ";sh", "<C-w>t<C-w>K<CR>")
 -- Comment
 maplua("<LEADER>/", 'require("Comment.api").locked("toggle.linewise.current")()')
 keymap(
-  "v",
-  "<LEADER>/",
-  '<esc><cmd>lua require("Comment.api").locked("comment.linewise")(vim.fn.visualmode())<CR>',
-  opts
+	"v",
+	"<LEADER>/",
+	'<esc><cmd>lua require("Comment.api").locked("comment.linewise")(vim.fn.visualmode())<CR>',
+	opts
 )
 vim.keymap.set("n", "<leader>sr", "", {
-  silent = true,
-  desc = "reload init.lua",
-  callback = function()
-    vim.cmd([[
+	silent = true,
+	desc = "reload init.lua",
+	callback = function()
+		vim.cmd([[
       source $MYVIMRC
     ]])
-    vim.notify("Nvim config successfully reloaded!", vim.log.levels.INFO, { title = "nvim-config" })
-  end,
+		vim.notify("Nvim config successfully reloaded!", vim.log.levels.INFO, { title = "nvim-config" })
+	end,
 })
 
 keymap("", "<LEADER>cd", ":cd %:p:h<CR>:pwd<CR>", opts)
@@ -233,17 +233,17 @@ mapkey("n", "<leader>ai", ":NeoAI<cr>")
 mapkey("n", "<leader>mf", ":lua MiniFiles.open()<cr>")
 
 -- auto add double qoutes in html attribute
-vim.keymap.set('i', '=', function()
-  local cursor = vim.api.nvim_win_get_cursor(0)
-  local left_of_cursor_range = { cursor[1] - 1, cursor[2] - 1 }
+vim.keymap.set("i", "=", function()
+	local cursor = vim.api.nvim_win_get_cursor(0)
+	local left_of_cursor_range = { cursor[1] - 1, cursor[2] - 1 }
 
-  -- The cursor location does not give us the correct node in this case, so we
-  -- need to get the node to the left of the cursor
-  local node = vim.treesitter.get_node { pos = left_of_cursor_range }
-  local nodes_active_in = { 'attribute_name', 'directive_argument', 'directive_name' }
-  if not node or not vim.tbl_contains(nodes_active_in, node:type()) then
-    return '='
-  end
+	-- The cursor location does not give us the correct node in this case, so we
+	-- need to get the node to the left of the cursor
+	local node = vim.treesitter.get_node({ pos = left_of_cursor_range })
+	local nodes_active_in = { "attribute_name", "directive_argument", "directive_name" }
+	if not node or not vim.tbl_contains(nodes_active_in, node:type()) then
+		return "="
+	end
 
-  return '=""<left>'
+	return '=""<left>'
 end, { expr = true, buffer = true })
