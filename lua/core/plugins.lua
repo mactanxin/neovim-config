@@ -177,13 +177,6 @@ require("lazy").setup({
 	-- fzf
 	"junegunn/fzf",
 	"junegunn/fzf.vim",
-	"junegunn/vim-easy-align",
-	{
-		"jcdickinson/wpm.nvim",
-		config = function()
-			require("wpm").setup({})
-		end,
-	},
 	-- lualine with config
 	{
 		"nvim-lualine/lualine.nvim",
@@ -279,7 +272,6 @@ require("lazy").setup({
 					gui = "bold",
 				},
 			}
-			local wtf = require("wtf")
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
@@ -309,7 +301,7 @@ require("lazy").setup({
 					-- show the current filename and session name,
 					lualine_c = { "filename", require("auto-session.lib").current_session_name },
 					lualine_x = { "encoding", "filetype" },
-					lualine_y = { "wtf.get_status", "progress", require("wpm").wpm, require("wpm").historic_graph },
+					lualine_y = { "wtf.get_status", "progress" },
 					lualine_z = { attached_clients, "location", require("lsp-progress").progress },
 				},
 				inactive_sections = {
@@ -376,7 +368,6 @@ augroup END
         set guioptions-=e " Use showtabline in gui vim
         set sessionoptions+=tabpages,globals " store tabpages and globals in session
       ]])
-			vim.notify("init tabline", "info")
 		end,
 	},
 	-- {
@@ -916,7 +907,6 @@ augroup END
 	},
 	"mattn/emmet-vim",
 	{ "easymotion/vim-easymotion", event = "VeryLazy" },
-	"wellle/context.vim",
 	"rmagatti/goto-preview",
 	"tpope/vim-surround",
 	"AndrewRadev/tagalong.vim",
