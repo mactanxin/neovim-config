@@ -613,7 +613,18 @@ augroup END
 		event = "BufReadPost",
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "vim", "lua", "rust", "vue", "typescript", "javascript", "html", "css", "svelte" },
+				ensure_installed = {
+					"vim",
+					"lua",
+					"rust",
+					"vue",
+					"typescript",
+					"javascript",
+					"html",
+					"css",
+					"svelte",
+					"tsx",
+				},
 				highlight = { enable = true },
 				indent = {
 					enable = true,
@@ -795,7 +806,7 @@ augroup END
 			require("gitsigns").setup({
 				signcolumn = true,
 				current_line_blame = true,
-				linehl = true,
+				-- linehl = true,
 				word_diff = true,
 			})
 		end,
@@ -1032,6 +1043,10 @@ augroup END
 		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
+	},
+	change_detection = {
+		enabled = true,
+		notify = true,
 	},
 	checker = { enabled = true }, -- automatically check for plugin updates
 	performance = {
