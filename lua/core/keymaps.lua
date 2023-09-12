@@ -222,6 +222,7 @@ mapcmd("<leader>lg", ":LazyGit")
 
 -- TreeSJ
 mapcmd("T", ":TSJToggle<CR>")
+mapkey("n", "<leader>M", ":TSJSplit<CR>")
 
 -- Lsp_lines
 mapkey("n", "<leader>ll", ":lua require('lsp_lines').toggle<cr>")
