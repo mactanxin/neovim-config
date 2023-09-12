@@ -1,2 +1,2 @@
 require("ui.dashboard")
-require("ui.colorscheme")
+require("ui.ayu")
