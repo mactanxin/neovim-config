@@ -146,11 +146,7 @@ require("lazy").setup({
 		},
 	},
 	{ "catppuccin/nvim", name = "catppuccin" },
-	"navarasu/onedark.nvim",
-	"hardhackerlabs/theme-vim",
 	"airblade/vim-rooter",
-	"ellisonleao/gruvbox.nvim",
-	"glepnir/zephyr-nvim",
 	{
 		"folke/tokyonight.nvim",
 		lazy = false,
@@ -160,19 +156,6 @@ require("lazy").setup({
 			transparent = true,
 			dim_inactive = true,
 		},
-	},
-	{
-		"Mofiqul/dracula.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			local dracula = require("dracula")
-			dracula.setup({
-				colors = { bg = "NONE" },
-				transparent_bg = true,
-				show_end_of_buffer = true,
-			})
-		end,
 	},
 	-- fzf
 	"junegunn/fzf",
@@ -465,8 +448,10 @@ augroup END
 				},
 				extensions = {
 					file_browser = {
+					  use_fd = true,
+					  hidden = true,
 						-- theme = "ivy",
-						-- disables netrw and use telescope-file-browser in its place
+						-- disables netrw and use dd telescope-file-browser in its place
 						hijack_netrw = true,
 						mappings = {
 							["i"] = {
@@ -522,15 +507,10 @@ augroup END
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
 			"onsails/lspkind-nvim",
-			"roobert/tailwindcss-colorizer-cmp.nvim",
 		},
 		config = function()
 			local lsp = require("lsp-zero")
 			lsp.preset("recommended")
-			-- lsp.on_attach(function(client, bufnr)
-			--   require("lsp-format").setup({
-			--   }).on_attach(client, bufnr)
-			-- end)
 			lsp.nvim_workspace()
 			lsp.setup()
 			vim.diagnostic.config({ virtual_text = true })
@@ -556,6 +536,10 @@ augroup END
 			end,
 		},
 	},
+	{
+    "HiPhish/rainbow-delimiters.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
 	{
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 		config = function()
@@ -630,14 +614,6 @@ augroup END
 					enable = true,
 					disable = { "yaml" },
 				},
-				-- rainbow = {
-				--   enable = true,
-				--   -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-				--   extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-				--   max_file_lines = nil, -- Do not enable for files with more than n lines, int
-				--   -- colors = {}, -- table of hex strings
-				--   -- termcolors = {} -- table of colour name strings
-				-- },
 				textobjects = {
 					select = {
 						enable = true,
@@ -676,6 +652,26 @@ augroup END
 						-- * selection_mode: eg 'v'
 						-- and should return true of false
 						include_surrounding_whitespace = true,
+					},
+					move = {
+						enable = true,
+						set_jumps = true, -- whether to set jumps in the jumplist
+						goto_next_start = {
+							["]f"] = "@function.outer",
+							["]]"] = "@class.outer",
+						},
+						goto_next_end = {
+							["]F"] = "@function.outer",
+							["]["] = "@class.outer",
+						},
+						goto_previous_start = {
+							["[f"] = "@function.outer",
+							["[["] = "@class.outer",
+						},
+						goto_previous_end = {
+							["[F"] = "@function.outer",
+							["[]"] = "@class.outer",
+						},
 					},
 				},
 				context_commentstring = {
@@ -717,7 +713,6 @@ augroup END
 			"MunifTanjim/nui.nvim",
 		},
 	},
-	{ "akinsho/toggleterm.nvim", opts = { open_mapping = [[<c-\>]], direction = "tab" } },
 	{
 		"numToStr/Comment.nvim",
 		config = function()
@@ -806,8 +801,6 @@ augroup END
 			require("gitsigns").setup({
 				signcolumn = true,
 				current_line_blame = true,
-				-- linehl = true,
-				word_diff = true,
 			})
 		end,
 	},
@@ -871,9 +864,8 @@ augroup END
 			require("mini.indentscope").setup(opts)
 		end,
 	},
-	{
+  {
 		"windwp/nvim-ts-autotag",
-		event = "LspAttach",
 		opts = {
 			autotag = {
 				enable = true,
@@ -905,10 +897,6 @@ augroup END
 				},
 			})
 		end,
-	},
-	{
-		"p00f/nvim-ts-rainbow",
-		lazy = false,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
