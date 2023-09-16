@@ -5,6 +5,7 @@ require("core.plugins")
 require("ui")
 require("core.lspsaga")
 require("core.utils")
+require("configs.null-ls")
 
 local vim = vim
 

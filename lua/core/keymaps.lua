@@ -188,6 +188,9 @@ maplua("<leader>fp", "require('ui.theme_picker').open_picker()<cr>")
 mapkey("n", "<leader>fe", "<cmd>Telescope file_browser<cr>")
 mapkey("n", "<leader>ds", "<cmd>Telescope lsp_document_symbols<cr>")
 mapkey("n", "<leader>lso", "<cmd>Lspsaga outline<CR>")
+mapkey('n', '<A-d>', '<cmd>Lspsaga term_toggle<CR>')
+mapkey('t', '<A-d>', '<cmd>Lspsaga term_toggle<CR>')
+
 -- vim.keymap.set({ "n", "t" }, "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
 -- telescope git commands
 mapkey("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", opts)
