@@ -18,20 +18,13 @@ function M.setup()
 
 	dashboard.opts.opts.noautocmd = true
 
-	local width = 80 -- 104
-	local height = 28 -- 28
-
-	dashboard.section.terminal.command = "sh " .. os.getenv("HOME") .. "/.config/nvim/lua/ui/futurama.sh"
-	dashboard.section.terminal.width = width
-	dashboard.section.terminal.height = height
-	dashboard.section.terminal.opts.redraw = true
-
-	local function button(sc, txt, keybind, keybind_opts)
-		local b = dashboard.button(sc, txt, keybind, keybind_opts)
-		b.opts.hl = "AlphaButtonText"
-		b.opts.hl_shortcut = "AlphaButtonShortcut"
-		return b
-	end
+	-- local width = 80 -- 104
+	-- local height = 28 -- 28
+	--
+	-- dashboard.section.terminal.command = "sh " .. os.getenv("HOME") .. "/.config/nvim/lua/ui/futurama.sh"
+	-- dashboard.section.terminal.width = width
+	-- dashboard.section.terminal.height = height
+	-- dashboard.section.terminal.opts.redraw = true
 
 	local cdir = vim.fn.getcwd()
 
@@ -214,19 +207,6 @@ function M.setup()
 		"                                ██                                ",
 	}
 
-	local doraemon = {
-		"　　　　,　 ────-　､          ",
-		"　　 ／　　 /⌒ ヽ ⌒ヽ＼        ",
-		"　 /,　-|／　・|・ ＼| ､ ヽ",
-		" /　／　 　 ` ─ ●ｰ ′ ヽヽ     ",
-		"ｌ /　　──　　　|　　 ─　　|  ",
-		"|/　　　──　　　|　　 ─　　|   ",
-		"|ｌ　　　 ──　　　|　　 ─ 　 ｌ",
-		"ｌ |　　／￣￣￣￣｀ヽ 　 /  ",
-		"ヽ ヽ　　 （＿＿＿＿＿ノ　／      ",
-		"　　　 >━━━━━ Ｏ━━─（ _ ）         ",
-		"/　　　／　　　　　　　ヽ　　／",
-	}
 	local pokemon = {
 		"    _.----.        ____         ,'  _\\   ___    ___     ____",
 		"_,-'       `.     |    |  /`.   \\,-'    |   \\  /   |   |    \\  |`.",
@@ -275,8 +255,6 @@ function M.setup()
 		{ type = "padding", val = 1 },
 		buttons,
 	}
-
-	dashboard.opts.opts.noautocmd = true
 
 	alpha.setup(dashboard.opts)
 end
